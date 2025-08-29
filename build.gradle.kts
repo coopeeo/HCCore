@@ -68,7 +68,7 @@ repositories {
     mavenCentral()
 
     // UltimateAdvancementAPI
-    maven("https://nexus.frengor.com/repository/public/")
+    maven("https://nexus.frengor.com/repository/releases/")
 
     // NBT-API
     maven("https://repo.codemc.org/repository/maven-public/")
