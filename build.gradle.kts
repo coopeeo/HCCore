@@ -24,8 +24,8 @@ dependencies {
     implementation("org.apache.commons:commons-text:1.11.0")
     implementation("org.apache.commons:commons-collections4:4.4")
 
-    compileOnly("com.frengor:ultimateadvancementapi:2.2.3")
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
+    compileOnly("com.frengor:ultimateadvancementapi:2.6.0")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.4.0")
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
     compileOnly("com.mojang:brigadier:1.0.18")
 }
