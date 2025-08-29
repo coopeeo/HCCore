@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Gradle Build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Java
@@ -60,7 +60,7 @@ jobs:
     outputs:
       release-assets: steps..outputs.assets
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Java
@@ -106,28 +106,4 @@ jobs:
           prerelease: ${{ contains(github.ref, '-rc.') }}
           files: "build/libs/HCCore-Shadow-*.jar"
 
-  deploy:
-    if: |
-      startsWith(github.ref, 'refs/tags/v') &&
-      (!contains(github.ref, '-rc.'))
-    needs: release
-    runs-on: ubuntu-latest
-    name: Deploy to Production Server
-    steps:
-      - name: Download released version
-        uses: actions/download-artifact@v3
-        with:
-          name: built-plugin
-      - name: SCP Deploy
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.MINECRAFT_DEPLOY_SSH_KEY }}
-        run: |
-          echo "$SSH_PRIVATE_KEY" > .ssh_private_key
-          chmod 700 .ssh_private_key
-          mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
-          ssh-keyscan mc-admin.hackclub.com >> ~/.ssh/known_hosts
-          eval $(ssh-agent)
-          ssh-add - <<< "$SSH_PRIVATE_KEY"
-          scp -i .ssh_private_key HCCore-Shadow-*.jar github-deploy@mc-admin.hackclub.com:/opt/minecraft/plugins/update
-          rm .ssh_private_key
           
