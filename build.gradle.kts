@@ -74,7 +74,7 @@ repositories {
     maven("https://repo.codemc.org/repository/maven-public/")
 
     // ProtoLib
-    maven("https://repo.dmulloy2.net/nexus/repository/public/")
+    maven("https://repo.dmulloy2.net/repository/public/")
 
     // Papermc
     maven("https://repo.papermc.io/repository/maven-public/")
